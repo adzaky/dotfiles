@@ -1,0 +1,29 @@
+[user]
+	name = adzaky
+	email = muhadlim17@gmail.com
+[core]
+  editor = nano
+[alias]
+  st = status
+  p = push
+  pl = pull
+  pf = push --force
+  l = log
+  f = fetch
+  rev = revert
+  re = reset
+  cp = cherry-pick
+  cpc = cherry-pick --continue
+  cpa = cherry-pick --abort
+  c = commit
+  cs = commit --signoff
+  ca = commit --amend
+	merge = merge --no-ff
+	onelog = "log --oneline --pretty=format:\"%h # %ai %s\""
+[init]
+  defaultBranch = main
+[color]
+	ui = auto
+[core]
+	autocrlf = false
+	eol = lf
