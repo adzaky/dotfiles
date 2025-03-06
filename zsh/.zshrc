@@ -6,6 +6,12 @@ typeset -Ag ZI
 ZI[HOME_DIR]="${ZSCRIPT_HOME}/zi"
 ZI[BIN_DIR]="${ZI[HOME_DIR]}/bin"
 
+# ssh
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval "$(ssh-agent -s)" > /dev/null
+    ssh-add ~/.ssh/sshadzakywp 2>/dev/null
+fi
+
 if [ ! -f "${ZI[BIN_DIR]}/zi.zsh" ]; then
     command mkdir -p "${ZI[BIN_DIR]}"
     command chmod go-rwX "${ZI[HOME_DIR]}"
@@ -68,3 +74,15 @@ for afterfile in "$ZSCRIPT_HOME/after"/**/*(.); do
     source $afterfile || true
 done
 
+# nvm
+[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
+source /usr/share/nvm/nvm.sh
+source /usr/share/nvm/bash_completion
+source /usr/share/nvm/install-nvm-exec
+
+# zoxide
+eval "$(zoxide init zsh --cmd cd)"
+
+# herd-lite
+export PATH="/home/adzaky/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="/home/adzaky/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
