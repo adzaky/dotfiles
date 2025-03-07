@@ -69,11 +69,6 @@ fi
 zi ice pick="lib/async.zsh" src="roundy.zsh" compile"{lib/async,roundy}.zsh"
 zi light nullxception/roundy
 
-# Load hooks from ~/.zsh/after (just like ~/.config/nvim/after/plugin)
-for afterfile in "$ZSCRIPT_HOME/after"/**/*(.); do
-    source $afterfile || true
-done
-
 # nvm
 [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
 source /usr/share/nvm/nvm.sh
